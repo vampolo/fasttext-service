@@ -1,0 +1,20 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker pull vampolo/fasttext-service:latest
+  - docker build -t fasttext-service --cache-from vampolo/fasttext-service:latest .
+
+script:
+  - echo "Publishing"
+  - |
+    if [ "$TRAVIS_BRANCH" == "master" ]; then
+    REPO=vampolo/fasttext-service;
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+    docker tag fasttext-service "$REPO:$TRAVIS_BUILD_NUMBER"
+    docker tag fasttext-service "$REPO:latest"
+    docker push "$REPO:$TRAVIS_BUILD_NUMBER"
+    docker push "$REPO:latest"
+    fi
