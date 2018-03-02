@@ -5,7 +5,7 @@ EXPOSE 8000
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["python3", "/app/main.py"]
 
-RUN apk add --no-cache python3 wget gzip openblas libstdc++
+RUN apk add --no-cache python3 wget unzip openblas libstdc++
 RUN python3 -m ensurepip --upgrade
 
 COPY requirements.txt /
