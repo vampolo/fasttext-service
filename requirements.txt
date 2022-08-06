@@ -14,7 +14,7 @@ numpy==1.13.3
 python-dateutil==2.6.1
 requests==2.18.4
 s3transfer==0.1.12
-sanic==0.7.0
+sanic==20.12.7
 scipy==1.0.0
 six==1.11.0
 smart-open==1.5.5
